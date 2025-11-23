@@ -2,7 +2,8 @@ import express from "express";
 import htmlToDocx from "html-to-docx";
 
 const app = express();
-app.use(express.json({ urlencoded: true }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 app.post("/convert", async (req, res) => {
   try {
